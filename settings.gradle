@@ -1,1 +1,1 @@
-include ':main-app', ':plugin-app'
+include ':plugin-1', ':plugin-app', ':common'

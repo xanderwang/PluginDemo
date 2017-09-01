@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
 import com.socks.library.KLog;
-import com.socks.library.KLogUtil;
 import com.xander.pluginapp.bean.PluginBean;
 
 import java.lang.reflect.Field;
@@ -77,6 +76,7 @@ public class Utils {
                 clazz = Class.forName(packageName + ".R$" + type, true, pathClassLoader);
             }
             Field field = clazz.getDeclaredField(resName);
+            field.setAccessible(true);
             int resourceId = field.getInt(clazz);
             //使用上述两种方式都可以，这里我们得到R类中的内部类mipmap，通过它得到对应的图片id，进而给我们使用
             return resourceId;
