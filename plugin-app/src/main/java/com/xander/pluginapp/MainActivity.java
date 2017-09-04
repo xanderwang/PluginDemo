@@ -2,12 +2,13 @@ package com.xander.pluginapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.socks.library.KLog;
 import com.xander.plugin.common.IToast;
 import com.xander.pluginapp.bean.PluginBean;
-import com.xander.pluginapp.utils.DexUtils;
-import com.xander.pluginapp.utils.Utils;
+import com.xander.pluginapp.utils.DexLoaderUtils;
+import com.xander.pluginapp.utils.PathLoaderUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,19 +31,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        DexUtils.OUT_DEX_DIR = dexDir.getAbsolutePath();
+        DexLoaderUtils.OUT_DEX_DIR = dexDir.getAbsolutePath();
 
         setContentView(R.layout.activity_main);
         KLog.init(BuildConfig.LOG_DEBUG, "wxy");
-        ArrayList<PluginBean> apps = Utils.getInstallPlugins(this);
+        ArrayList<PluginBean> apps = PathLoaderUtils.getInstallPlugins(this);
 //        KLog.debug(apps);
-//        Utils.loadPluginDrawable(this, apps.get(0), "ic_launcher");
+//        PathLoaderUtils.loadPluginDrawable(this, apps.get(0), "ic_launcher");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        IToast toast = DexUtils.getDexIToast("plugin-1-debug.apk", getClassLoader());
+        IToast toast = DexLoaderUtils.getDexIToast("plugin-1-debug.apk", getClassLoader());
+        Toast.makeText(this,toast.getToast(),Toast.LENGTH_SHORT).show();
         KLog.d(toast.getToast());
     }
 }

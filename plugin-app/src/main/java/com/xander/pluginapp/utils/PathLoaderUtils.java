@@ -19,7 +19,7 @@ import dalvik.system.PathClassLoader;
  * Created by xanderwang on 2017/8/18.
  */
 
-public class Utils {
+public class PathLoaderUtils {
 
     private static HashMap<String, Context> contextMap = new HashMap<>();
     private static HashMap<String, PathClassLoader> pathClassLoaderMap = new HashMap<>();

@@ -14,7 +14,7 @@ import dalvik.system.DexClassLoader;
  * Created by xanderwang on 2017/9/1.
  */
 
-public class DexUtils {
+public class DexLoaderUtils {
 
     public static final String SD_CARD = Environment.getExternalStorageDirectory().getAbsolutePath();
     public static final String DEX_DIR = SD_CARD + "/plugin";
@@ -32,8 +32,8 @@ public class DexUtils {
         DexClassLoader dexClassLoader = dexClassLoaderHashMap.get(pluginName);
         if (dexClassLoader == null) {
             dexClassLoader = new DexClassLoader(
+                pluginFile.getAbsolutePath(),
                 OUT_DEX_DIR,
-                DEX_DIR,
                 null,
                 classLoader
             );
