@@ -52,7 +52,7 @@ public class Utils {
             }
         }
         if (null != pluginContext) {
-            int resId = getResourceId(pluginContext, packageName, "minmap", "ic_launcher");
+            int resId = getResourceId(pluginContext, packageName, "minmap", resName);
             KLog.d("resId:" + resId);
             return pluginContext.getResources().getDrawable(resId);
         }
